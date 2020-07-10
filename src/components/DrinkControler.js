@@ -5,19 +5,12 @@ import DrinkList from "./DrinkList"
 import {} from '../actions'
 
 class DrinkControl extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      formVisibleOnPage: false,
-      masterDrinkList: []
-    }
-  }
+ 
   
   handleClick = () => {
-    this.setState((prevState) => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage,
-    }))
+    this.props.dispatch({ type: "TOGGLE_CREATE"})
   };
+
   handleAddingNewDrinkToList = (newDrink) => {
     const newMasterDrinkList = this.state.masterDrinkList.concat(newDrink);
     this.setState({
@@ -45,7 +38,7 @@ class DrinkControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
-    if(this.state.formVisibleOnPage){
+    if(this.props.state.formVisibleOnPage){
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleAddingNewDrinkToList} />
       buttonText = "Return to Drink List"
     } else {
@@ -60,4 +53,11 @@ class DrinkControl extends React.Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    drinkList: state.masterDrinkList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+DrinkControl = connect(mapStateToProps)(DrinkControl)
 export default DrinkControl
