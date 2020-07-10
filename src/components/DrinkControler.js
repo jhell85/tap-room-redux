@@ -1,8 +1,9 @@
+import {} from '../actions'
+
+import DrinkList from "./DrinkList"
+import NewDrinkForm from "./NewDrinkForm"
 import React from 'react'
 import {connect} from "react-redux"
-import NewDrinkForm from "./NewDrinkForm"
-import DrinkList from "./DrinkList"
-import {} from '../actions'
 
 class DrinkControl extends React.Component {
  
@@ -35,14 +36,14 @@ class DrinkControl extends React.Component {
     
   }
 
-  render(){
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if(this.props.state.formVisibleOnPage){
+    if(this.props.formVisibleOnPage){
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleAddingNewDrinkToList} />
       buttonText = "Return to Drink List"
     } else {
-      currentlyVisibleState = (<DrinkList drinkList={this.state.masterDrinkList} drinkPouredClicked={this.handleDrinkPour} />)
+      currentlyVisibleState = (<DrinkList drinkList={this.props.drinkList} drinkPouredClicked={this.handleDrinkPour} />)
       buttonText = "Add a Drink"
     }
     return (
@@ -55,7 +56,7 @@ class DrinkControl extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    drinkList: state.masterDrinkList,
+    drinkList: state.drinkList,
     formVisibleOnPage: state.formVisibleOnPage
   }
 }
