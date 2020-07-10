@@ -9,16 +9,13 @@ class DrinkControl extends React.Component {
  
   
   handleClick = () => {
-    this.props.dispatch({ type: "TOGGLE_CREATE"})
+    this.props.dispatch({ type: "TOGGLE_CREATE" })
   };
 
   handleAddingNewDrinkToList = (newDrink) => {
-    const newMasterDrinkList = this.state.masterDrinkList.concat(newDrink);
-    this.setState({
-      masterDrinkList: newMasterDrinkList,
-      formVisibleOnPage: false  
-    });
-  }
+    this.props.dispatch({ type: "ADD_DRINK", drink: newDrink })
+    this.props.dispatch({ type: "TOGGLE_CREATE" })
+  };
 
   handleDrinkPour = (id) => {
     const selectedDrink = this.state.masterDrinkList.filter((drink) => drink.id === id)[0];
