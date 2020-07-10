@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 
 function DrinkList(props) {
-  console.log(props)
   const sortedList = props.drinkList.sort((a,b)=>a.timeStamp.getTime()-b.timeStamp.getTime());
   return (
     <div class="row justify-content-md-center">

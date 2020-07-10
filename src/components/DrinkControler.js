@@ -18,18 +18,18 @@ class DrinkControl extends React.Component {
   };
 
   handleDrinkPour = (id) => {
-    const selectedDrink = this.state.masterDrinkList.filter((drink) => drink.id === id)[0];
-    if (selectedDrink.drinksLeft === 0) {
-      alert("sorry we're out of this drink")
-    } else {
-      selectedDrink.drinksLeft --;
-    }
-    const upadatedDrinkList = this.state.masterDrinkList.filter(drink => drink.id !== id).concat(selectedDrink)
-    this.setState({
-      masterDrinkList: upadatedDrinkList
-    })
-    console.log(id)
-
+    // const selectedDrink = this.state.masterDrinkList.filter((drink) => drink.id === id)[0];
+    // if (selectedDrink.drinksLeft === 0) {
+    //   alert("sorry we're out of this drink")
+    // } else {
+    //   selectedDrink.drinksLeft --;
+    // }
+    // const upadatedDrinkList = this.state.masterDrinkList.filter(drink => drink.id !== id).concat(selectedDrink)
+    // this.setState({
+    //   masterDrinkList: upadatedDrinkList
+    // })
+    // console.log(id)
+    this.props.dispatch({ type: "DECREMENT_DRINKSLEFT", id: id })
     
   }
 
