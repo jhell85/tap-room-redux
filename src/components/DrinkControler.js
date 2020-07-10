@@ -1,6 +1,8 @@
 import React from 'react'
+import {connect} from "react-redux"
 import NewDrinkForm from "./NewDrinkForm"
 import DrinkList from "./DrinkList"
+import {} from '../actions'
 
 class DrinkControl extends React.Component {
   constructor(props){
