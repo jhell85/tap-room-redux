@@ -9,4 +9,10 @@ describe('drinkListReducer', () =>{
     const drink = {name: "Hop Master", brand: "beer land", alcoholContent: 5, price: 2, drinksLeft: 124, timeStamp: new Date(), id: 1}
     expect(drinkListReducer([], {type: 'ADD_DRINK', drink })).toEqual([drink])
   });
+
+  test ('should decrement drinksLeft property of Drink', ()=> {
+    const drink = {name: "Hop Master", brand: "beer land", alcoholContent: 5, price: 2, drinksLeft: 124, timeStamp: new Date(), id: 1}
+    drinkListReducer([], {type: 'ADD_DRINK', drink})
+    expect(drinkListReducer([drink], {type: 'DECREMENT_DRINKSLEFT',id: drink.id })).toEqual([{ ...drink, drinksLeft: 123 }])
+  })
 })
