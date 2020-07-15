@@ -1,4 +1,4 @@
-import {} from '../actions'
+import * as a from "../actions"
 
 import DrinkList from "./DrinkList"
 import NewDrinkForm from "./NewDrinkForm"
@@ -9,7 +9,7 @@ class DrinkControl extends React.Component {
  
   
   handleClick = () => {
-    this.props.dispatch({ type: "TOGGLE_CREATE" })
+   this.props.dispatch(a.toggleCreate())
   };
 
   handleAddingNewDrinkToList = (newDrink) => {

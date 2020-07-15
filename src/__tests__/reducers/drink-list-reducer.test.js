@@ -1,4 +1,4 @@
-import drinkListReducer from '../drink-list-reducer'
+import drinkListReducer from './../../reducers/drink-list-reducer'
 
 describe('drinkListReducer', () =>{
   test('should return default state if there is no action passed into reducer', () => {
